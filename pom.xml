@@ -16,6 +16,8 @@
     <properties>
         <java.version>21</java.version>
         <spring-cloud.version>2023.0.0</spring-cloud.version>
+        <openapi.version>2.2.0</openapi.version>
+        <swagger.models.jakarta.version>2.2.7</swagger.models.jakarta.version>
     </properties>
     <dependencies>
         <dependency>
@@ -53,6 +55,16 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${openapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-models-jakarta</artifactId>
+            <version>${swagger.models.jakarta.version}</version>
         </dependency>
     </dependencies>
     <dependencyManagement>
