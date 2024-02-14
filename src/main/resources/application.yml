@@ -5,6 +5,16 @@ spring:
     active: local
   config:
     import: optional:configserver:http://localhost:8085
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    bus:
+      enabled: true
+      refresh:
+        enabled: true
 
 management:
   endpoints:
