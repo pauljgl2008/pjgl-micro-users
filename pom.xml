@@ -15,19 +15,19 @@
     <description>Demo pjgl micro users project for Spring Boot</description>
     <properties>
         <java.version>21</java.version>
-        <spring-cloud.version>2023.0.0</spring-cloud.version>
-        <openapi.version>2.2.0</openapi.version>
-        <swagger.models.jakarta.version>2.2.7</swagger.models.jakarta.version>
-        <spring.boot.devtools.version>3.2.2</spring.boot.devtools.version>
+        <lombok.version>1.18.30</lombok.version>
+        <maven.surefire.plugin.version>2.19.1</maven.surefire.plugin.version>
         <micrometer.registry.prometheus.version>1.12.3</micrometer.registry.prometheus.version>
+        <openapi.version>2.2.0</openapi.version>
+        <spring.boot.devtools.version>3.2.2</spring.boot.devtools.version>
         <spring.boot.starter.actuator.version>3.2.2</spring.boot.starter.actuator.version>
-        <spring.cloud.starter.bus.amqp.version>4.1.0</spring.cloud.starter.bus.amqp.version>
         <spring.boot.starter.data.mongodb.version>3.2.2</spring.boot.starter.data.mongodb.version>
         <spring.boot.starter.security.version>3.2.2</spring.boot.starter.security.version>
         <spring.boot.starter.web.version>3.2.2</spring.boot.starter.web.version>
+        <spring.cloud.starter.bus.amqp.version>4.1.0</spring.cloud.starter.bus.amqp.version>
         <spring.cloud.starter.config.version>4.1.0</spring.cloud.starter.config.version>
-        <lombok.version>1.18.30</lombok.version>
-        <maven.surefire.plugin.version>2.19.1</maven.surefire.plugin.version>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
+        <swagger.models.jakarta.version>2.2.7</swagger.models.jakarta.version>
     </properties>
     <dependencies>
         <dependency>
@@ -37,14 +37,21 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${openapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <version>${spring.boot.devtools.version}</version>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>${spring.boot.starter.actuator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
-            <version>${spring.cloud.starter.bus.amqp.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -58,8 +65,18 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring.boot.starter.web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+            <version>${spring.cloud.starter.bus.amqp.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -67,37 +84,20 @@
             <version>${spring.cloud.starter.config.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <version>${spring.boot.devtools.version}</version>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${openapi.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-models-jakarta</artifactId>
             <version>${swagger.models.jakarta.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
     <dependencyManagement>
