@@ -6,7 +6,7 @@ spring:
   config:
     import: optional:configserver:http://localhost:8085
   rabbitmq:
-    host: localhost
+    host: 127.0.0.1
     port: 5672
     username: guest
     password: guest
@@ -16,10 +16,15 @@ spring:
       refresh:
         enabled: true
 
+security.basic.enabled: false
 management:
   endpoints:
     web:
       exposure:
-        include: ["*", "prometheus"]
+        include: ["*", "prometheus", "metrics"]
+  endpoint:
+    beans:
+      cache:
+        time-to-live: 10s
   security:
     enabled: false
