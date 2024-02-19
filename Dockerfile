@@ -1,11 +1,8 @@
-# Usa una imagen base de OpenJDK para Java 17
+# Usa una imagen base de OpenJDK para Java 22
 FROM openjdk:22-ea-34 AS build
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
-
-# Instala netcat
-RUN apt-get update && apt-get install -y netcat
 
 # Copia el JAR de tu aplicación Spring Boot (asegúrate de que se encuentre en el mismo directorio que este Dockerfile)
 COPY target/pjgl-micro-users-0.0.1-SNAPSHOT.jar /app/pjgl-micro-users.jar
