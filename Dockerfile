@@ -19,7 +19,7 @@ WORKDIR /app
 COPY --from=build /app/target/pjgl-micro-users-0.0.1-SNAPSHOT.jar /app/pjgl-micro-users.jar
 
 # Expone el puerto en el que tu aplicación Spring Boot está escuchando
-EXPOSE 8085
+EXPOSE 8080
 
 # Nombre de la imagen
 LABEL app="pjgl-config-server"
