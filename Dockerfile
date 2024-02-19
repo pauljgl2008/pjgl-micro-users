@@ -1,23 +1,28 @@
-# Usa una imagen base de OpenJDK para Java 22
-FROM openjdk:22-ea-34 AS build
+FROM maven:3.9.6-ibm-semeru-21-jammy as build
+
+# Copia el código fuente de la aplicación a la imagen
+COPY . /app
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copia el JAR de tu aplicación Spring Boot (asegúrate de que se encuentre en el mismo directorio que este Dockerfile)
-COPY target/pjgl-micro-users-0.0.1-SNAPSHOT.jar /app/pjgl-micro-users.jar
+# Construye la aplicación con Maven
+RUN mvn clean package
 
-# Expone el puerto en el que tu aplicación Spring Boot está escuchando (el mismo que especificas en tu aplicación)
-EXPOSE 8080
+# Usa una imagen base de OpenJDK para Java 21 con Alpine Linux
+FROM openjdk:23-jdk-slim AS final
 
-# COPY entrypoint.sh /app/entrypoint.sh
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
 
-# RUN chmod +x /app/entrypoint.sh
+# Copia el JAR de tu aplicación Spring Boot desde la imagen de construcción
+COPY --from=build /app/target/pjgl-micro-users-0.0.1-SNAPSHOT.jar /app/pjgl-micro-users.jar
 
-# ENTRYPOINT ["/app/entrypoint.sh"]
+# Expone el puerto en el que tu aplicación Spring Boot está escuchando
+EXPOSE 8085
 
 # Nombre de la imagen
-LABEL app="pjgl-micro-users"
+LABEL app="pjgl-config-server"
 
 # Comando para ejecutar la aplicación Spring Boot al iniciar el contenedor
 CMD ["java", "-jar", "/app/pjgl-micro-users.jar"]
