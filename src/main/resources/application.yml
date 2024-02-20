@@ -25,10 +25,15 @@ management:
   endpoints:
     web:
       exposure:
-        include: ["*", "prometheus", "metrics"]
+        include: ["*", "prometheus", "metrics", "health"]
   endpoint:
     beans:
       cache:
         time-to-live: 10s
+    health:
+      show-details: always
   security:
     enabled: false
+  metrics:
+    tags:
+      application: app-micro-users
