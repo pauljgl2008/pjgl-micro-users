@@ -6,6 +6,8 @@ https://docs.spring.io/spring-security/reference/servlet/architecture.html
 Docker:
 - $ apt-get install docker-buildx-plugin 
 - $ docker buildx build -t pjgl-micro-users .
+Saber las ipaddress de los contenedores corriendo
+- $ docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q)
 
 Correr la imagen de RabbitMQ antes de iniciar el micro:
 - $ docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.12-management
